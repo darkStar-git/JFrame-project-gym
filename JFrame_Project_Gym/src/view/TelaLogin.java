@@ -125,7 +125,23 @@ public class TelaLogin extends JFrame {
         }
 
         //Como estava dandoe erro, pois as telas das entidades nao estavam prontas ainda. Falta encaixar a parte do redimencionamento
-
-
+       /*
+        
+        if (senha.equalsIgnoreCase("atendente123") || usuario.equalsIgnoreCase("atendente")) {
+            new JanelaAtendente().setVisible(true);
+            dispose(); // Fecha a tela de login
+        } else if (senha.equalsIgnoreCase("prof123") || usuario.equalsIgnoreCase("professor")) {
+            new JanelaProfessor().setVisible(true);
+            dispose();
+        } else if (senha.equalsIgnoreCase("aluno123") || usuario.equalsIgnoreCase("aluno")) {
+            new JanelaAluno().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Usuário ou senha incorretos!",
+                    "Erro de Autenticação",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+       */
     }
 }
