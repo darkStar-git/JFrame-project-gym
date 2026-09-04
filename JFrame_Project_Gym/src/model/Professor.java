@@ -3,17 +3,15 @@ package model;
 import java.time.LocalDate;
 
 public class Professor extends Pessoa {
-	private String  cref;
+	private String cref;
 	private String especialidades;
-	
-	public Professor(String nome, LocalDate dataNasc, String email, String cpf, String UF, String cep, String senha) {
+
+	// Construtor completo com todos os atributos da Pessoa + Professor
+	public Professor(String nome, LocalDate dataNasc, String email, String cpf, String UF, String cep, String senha, String cref, String especialidades) {
 		super(nome, dataNasc, email, cpf, UF, cep, senha);
-		// TODO Auto-generated constructor stub
 		this.cref = cref;
 		this.especialidades = especialidades;
 	}
-	
-	
 
 	public String getCref() {
 		return cref;
@@ -31,8 +29,8 @@ public class Professor extends Pessoa {
 		this.especialidades = especialidades;
 	}
 
-
-	
-	
-	
+	@Override
+	public String toString() {
+		return getNome() + " (CREF: " + cref + ")";
+	}
 }
