@@ -7,25 +7,25 @@ public class JanelaDevs extends JDialog {
 
     public JanelaDevs(Frame owner) {
         super(owner, "Desenvolvedores", true);
-        setSize(400, 360);
+        setSize(580, 520); // Largura expandida para 580px e altura para 520px
         setLocationRelativeTo(owner);
         setLayout(null);
         setResizable(false);
 
         JLabel lblTitulo = new JLabel("Desenvolvedores", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 16));
-        lblTitulo.setBounds(20, 15, 345, 25);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
+        lblTitulo.setBounds(20, 15, 525, 25);
         add(lblTitulo);
 
         JPanel painelIntegrantes = new JPanel();
-        painelIntegrantes.setLayout(new GridLayout(4, 1, 8, 8));
+        painelIntegrantes.setLayout(new GridLayout(4, 1, 12, 12));
 
         // Dados dos 4 integrantes: {Nome, Caminho da Foto}
         String[][] integrantes = new String[][]{
-                {"Integrante 1", "/images/dev1.jpg"},
-                {"Integrante 2", "/images/dev2.jpg"},
-                {"Integrante 3", "/images/dev3.jpg"},
-                {"Integrante 4", "/images/dev4.jpg"}
+                {"José Antônio", "/images/dev1.png"},
+                {"Carlos Henrique", "/images/dev2.png"},
+                {"Nicolly Leal", "/images/dev1.png"},
+                {"Rafael Da hora", "/images/dev1.png"}
         };
 
         for (int i = 0; i < integrantes.length; i++) {
@@ -38,7 +38,8 @@ public class JanelaDevs extends JDialog {
             java.net.URL imgUrl = getClass().getResource(integrantes[i][1]);
             if (imgUrl != null) {
                 ImageIcon imgOriginal = new ImageIcon(imgUrl);
-                Image imgScale = imgOriginal.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+                // Foto aumentada para 80x80
+                Image imgScale = imgOriginal.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
                 lblFoto.setIcon(new ImageIcon(imgScale));
             } else {
                 lblFoto.setText("[Foto]");
@@ -46,24 +47,25 @@ public class JanelaDevs extends JDialog {
                 lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
                 lblFoto.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
             }
-            lblFoto.setBounds(10, 5, 45, 45);
+            lblFoto.setBounds(10, 5, 80, 80); // Quadrado da foto expandido
             pDev.add(lblFoto);
 
             JLabel lblNome = new JLabel(integrantes[i][0]);
-            lblNome.setFont(new Font("Arial", Font.BOLD, 13));
-            lblNome.setBounds(65, 17, 250, 20);
+            lblNome.setFont(new Font("Arial", Font.BOLD, 15));
+            lblNome.setBounds(110, 35, 390, 22); // Alinhado verticalmente com a nova imagem
             pDev.add(lblNome);
 
             painelIntegrantes.add(pDev);
         }
 
-        painelIntegrantes.setBounds(20, 50, 345, 220);
+        painelIntegrantes.setBounds(20, 50, 525, 370);
         add(painelIntegrantes);
 
         JButton btnFechar = new JButton("Fechar");
-        btnFechar.setBounds(140, 280, 105, 30);
+        btnFechar.setBounds(230, 435, 120, 35);
         btnFechar.setBackground(new Color(30, 30, 30));
         btnFechar.setForeground(Color.WHITE);
+        btnFechar.setFocusPainted(false);
         btnFechar.addActionListener(e -> dispose());
         add(btnFechar);
     }

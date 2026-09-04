@@ -86,6 +86,10 @@ public class TelaLogin extends JFrame {
                 if (usuario.equalsIgnoreCase("professor") && senha.equalsIgnoreCase("prof123")) {
                     new JanelaProfessor().setVisible(true);
                     dispose();
+                }// 3. Acesso do ALUNO
+                else if (usuario.equalsIgnoreCase("aluno") && senha.equalsIgnoreCase("aluno123")) {
+                    new JanelaAluno().setVisible(true);
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(
                             TelaLogin.this,
