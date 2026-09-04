@@ -90,7 +90,12 @@ public class TelaLogin extends JFrame {
                 else if (usuario.equalsIgnoreCase("aluno") && senha.equalsIgnoreCase("aluno123")) {
                     new JanelaAluno().setVisible(true);
                     dispose();
-                } else {
+                }
+                else if (usuario.equalsIgnoreCase("atendente") && senha.equalsIgnoreCase("atendente123")) {
+                    new JanelaAtendente().setVisible(true);
+                    dispose();
+                }                
+                else {
                     JOptionPane.showMessageDialog(
                             TelaLogin.this,
                             "Usuário ou senha incorretos!",
@@ -98,6 +103,8 @@ public class TelaLogin extends JFrame {
                             JOptionPane.ERROR_MESSAGE
                     );
                 }
+
+                
             }
         });
 
