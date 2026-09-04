@@ -1,10 +1,11 @@
 
+import view.TelaLogin;
+import javax.swing.JFrame;
 
 public class main {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+		TelaLogin login = new TelaLogin();
+		login.setVisible(true);
 	}
-
 }
