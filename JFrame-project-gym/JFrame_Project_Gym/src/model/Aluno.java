@@ -3,24 +3,29 @@ package model;
 import java.time.LocalDate;
 
 public class Aluno extends Pessoa {
-	private String objetivo;
+    private String objetivo;
 
-	public Aluno(String nome, LocalDate dataNasc, String email, String cpf, String UF, String cep, String senha, String objetivo) {
-		super(nome, dataNasc, email, cpf, UF, cep, senha);
-		this.objetivo = objetivo;
-	}
+    public Aluno(String nome, String cpf, String email) {
+        super(nome, null, email, cpf, null, null, null);
+    }
 
-	public String getObjetivo() {
-		return objetivo;
-	}
+    public Aluno(String nome, LocalDate dataNasc, String email, String cpf,
+                 String UF, String cep, String senha, String objetivo) {
 
-	public void setObjetivo(String objetivo) {
-		this.objetivo = objetivo;
-	}
+        super(nome, dataNasc, email, cpf, UF, cep, senha);
+        this.objetivo = objetivo;
+    }
 
-	// Sobrescrevemos o toString para exibir o nome do aluno no JComboBox e JList facilmente
-	@Override
-	public String toString() {
-		return getNome() + " (CPF: " + getCpf() + ")";
-	}
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    @Override
+    public String toString() {
+        return getNome() + " (CPF: " + getCpf() + ")";
+    }
 }

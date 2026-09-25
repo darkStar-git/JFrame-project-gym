@@ -71,6 +71,18 @@ public class CadastrarAluno extends JFrame {
         btnLimpar.setFocusPainted(false);
         add(btnLimpar);
     }
+    public String getNome() {
+    	return txtNome.getText().trim();
+    	
+    }
+    
+    public String getCpf() {
+        return txtCpf.getText().trim();
+    }
+
+    public String getEmail() {
+        return txtEmail.getText().trim();
+    }
 
     // Getters para permitir acesso aos campos e botões no Controller
     public JTextField getTxtNome() { return txtNome; }

@@ -38,6 +38,7 @@ public class ConsultarAluno extends JFrame {
     }
 
     // Getters para permitir acesso aos campos e botões no Controller
+    
     public JTextField getTxtCpf() { return txtCpf; }
     public JButton getBtnConsultar() { return btnConsultar; }
 }

@@ -1,8 +1,12 @@
 package controller;
 
 import view.CadastrarAluno;
+
 import javax.swing.*;
 
+import DAO.cadastrarAlunoDAO;
+import model.Treino;
+import model.Aluno;
 public class CadastrarAlunoController {
 
     private CadastrarAluno view;
@@ -16,9 +20,15 @@ public class CadastrarAlunoController {
     }
 
     private void cadastrar() {
+    	String nome =view.getNome();
+    	String cpf = view.getCpf();
+    	String email = view.getEmail();
+        
         if (view.getTxtNome().getText().isEmpty()
+        		|| view.getTxtNome().getText().isEmpty()
                 || view.getTxtCpf().getText().isEmpty()
                 || view.getTxtEmail().getText().isEmpty()) {
+        	
 
             JOptionPane.showMessageDialog(
                     view,
@@ -36,6 +46,15 @@ public class CadastrarAlunoController {
                     JOptionPane.INFORMATION_MESSAGE
             );
         }
+        Aluno aluno = new Aluno(nome,cpf, email);
+
+        // Executa a persistência via DAO
+        cadastrarAlunoDAO dao = new cadastrarAlunoDAO();
+        dao.adicionar(aluno);
+
+        JOptionPane.showMessageDialog(view, "Aluno cadastrado com sucesso!");
+        view.getBtnLimpar();
+        view.dispose();
     }
 
     private void limpar() {
