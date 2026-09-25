@@ -10,7 +10,6 @@ public class JanelaProfessor extends JFrame {
     private JButton btnEditar;
     private JButton btnSair;
 
-
     private Icon iconeDialogo;
 
     public JanelaProfessor() {
@@ -59,6 +58,7 @@ public class JanelaProfessor extends JFrame {
         btnConsultar.setFont(new Font("Arial", Font.BOLD, 13));
         btnConsultar.setBackground(new Color(30, 30, 30));
         btnConsultar.setForeground(Color.WHITE);
+        btnConsultar.setFocusPainted(false);
         painelCentral.add(btnConsultar);
 
         btnCadastrar = new JButton("Cadastrar Treino");
@@ -66,6 +66,7 @@ public class JanelaProfessor extends JFrame {
         btnCadastrar.setFont(new Font("Arial", Font.BOLD, 13));
         btnCadastrar.setBackground(new Color(30, 30, 30));
         btnCadastrar.setForeground(Color.WHITE);
+        btnCadastrar.setFocusPainted(false);
         painelCentral.add(btnCadastrar);
 
         btnEditar = new JButton("Editar Treino");
@@ -73,6 +74,7 @@ public class JanelaProfessor extends JFrame {
         btnEditar.setFont(new Font("Arial", Font.BOLD, 13));
         btnEditar.setBackground(new Color(30, 30, 30));
         btnEditar.setForeground(Color.WHITE);
+        btnEditar.setFocusPainted(false);
         painelCentral.add(btnEditar);
 
         btnSair = new JButton("Sair / Voltar");
@@ -80,54 +82,14 @@ public class JanelaProfessor extends JFrame {
         btnSair.setFont(new Font("Arial", Font.PLAIN, 12));
         btnSair.setBackground(new Color(200, 50, 50));
         btnSair.setForeground(Color.WHITE);
+        btnSair.setFocusPainted(false);
         painelCentral.add(btnSair);
 
         add(painelCentral);
-
-
-        // AÇÕES DOS BOTÕES
-
-
-        // 1. CONSULTAR ALUNOS (Janela visual dedicada)
-        btnConsultar.addActionListener(e -> abrirJanelaConsultarAlunos());
-
-        // 2. CADASTRAR TREINO (JOptionPane com a logo personalizada)
-        btnCadastrar.addActionListener(e -> {
-            String[] alunos = new String[]{"Lucas Andrade", "Mariana Souza", "Carlos Eduardo"};
-            JOptionPane.showInputDialog(
-                    JanelaProfessor.this,
-                    "Selecione o aluno para cadastrar o treino:",
-                    "Cadastrar Treino",
-                    JOptionPane.PLAIN_MESSAGE,
-                    iconeDialogo,
-                    alunos,
-                    alunos[0]
-            );
-        });
-
-        // 3. EDITAR TREINO (JOptionPane com a logo personalizada)
-        btnEditar.addActionListener(e -> {
-            String[] treinos = new String[]{"Lucas Andrade - Hipertrofia", "Mariana Souza - Emagrecimento"};
-            JOptionPane.showInputDialog(
-                    JanelaProfessor.this,
-                    "Selecione o treino que deseja editar:",
-                    "Editar Treino",
-                    JOptionPane.PLAIN_MESSAGE,
-                    iconeDialogo,
-                    treinos,
-                    treinos[0]
-            );
-        });
-
-        // 4. SAIR
-        btnSair.addActionListener(e -> {
-            new TelaLogin().setVisible(true);
-            dispose();
-        });
     }
 
-    // Janela de Visualização de Alunos (com logo no topo)
-    private void abrirJanelaConsultarAlunos() {
+    // Método utilitário para exibir a janela de diálogo de consulta de alunos
+    public void exibirJanelaConsultarAlunos(String[] dadosAlunos) {
         JDialog janela = new JDialog(this, "Consultar Alunos", true);
         janela.setSize(450, 410);
         janela.setLocationRelativeTo(this);
@@ -152,15 +114,7 @@ public class JanelaProfessor extends JFrame {
         lblTitulo.setBounds(20, 65, 395, 25);
         janela.add(lblTitulo);
 
-        // Dados de exemplo exibidos na lista
-        String[] dadosExemplo = new String[]{
-                "Lucas Andrade - CPF: 111.222.333-44 - Objetivo: Hipertrofia",
-                "Mariana Souza - CPF: 555.666.777-88 - Objetivo: Emagrecimento",
-                "Carlos Eduardo - CPF: 999.888.777-66 - Objetivo: Condicionamento",
-                "Ana Beatriz - CPF: 222.333.444-55 - Objetivo: Saúde / Reabilitação"
-        };
-
-        JList<String> listaAlunosUI = new JList<>(dadosExemplo);
+        JList<String> listaAlunosUI = new JList<>(dadosAlunos);
         listaAlunosUI.setFont(new Font("Arial", Font.PLAIN, 12));
 
         JScrollPane scroll = new JScrollPane(listaAlunosUI);
@@ -171,9 +125,17 @@ public class JanelaProfessor extends JFrame {
         btnFechar.setBounds(165, 310, 110, 35);
         btnFechar.setBackground(new Color(30, 30, 30));
         btnFechar.setForeground(Color.WHITE);
+        btnFechar.setFocusPainted(false);
         btnFechar.addActionListener(e -> janela.dispose());
         janela.add(btnFechar);
 
         janela.setVisible(true);
     }
+
+    // Getters
+    public JButton getBtnConsultar() { return btnConsultar; }
+    public JButton getBtnCadastrar() { return btnCadastrar; }
+    public JButton getBtnEditar() { return btnEditar; }
+    public JButton getBtnSair() { return btnSair; }
+    public Icon getIconeDialogo() { return iconeDialogo; }
 }

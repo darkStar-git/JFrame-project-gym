@@ -3,9 +3,12 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/JFrame_Project_Gym/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JFrame-project-gym/JFrame_Project_Gym/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/JFrame_Project_Gym" />
+      <excludeFolder url="file://$MODULE_DIR$/JFrame_Project_Gym/src" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mysql-connector-j-9.7.0" level="project" />
   </component>
 </module>

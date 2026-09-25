@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ConsultarAluno extends JFrame {
 
@@ -37,33 +35,9 @@ public class ConsultarAluno extends JFrame {
         btnConsultar.setForeground(Color.WHITE);
         btnConsultar.setFocusPainted(false);
         add(btnConsultar);
-
-        btnConsultar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (txtCpf.getText().isEmpty()) {
-
-                    JOptionPane.showMessageDialog(
-                            ConsultarAluno.this,
-                            "Digite o CPF do aluno!",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE
-                    );
-
-                } else {
-
-                    JOptionPane.showMessageDialog(
-                            ConsultarAluno.this,
-                            "Aluno encontrado!\n\n" +
-                            "CPF: " + txtCpf.getText() +
-                            "\nNome: Exemplo de Aluno" +
-                            "\nStatus: ATIVO",
-                            "Dados do Aluno",
-                            JOptionPane.INFORMATION_MESSAGE
-                    );
-                }
-            }
-        });
     }
+
+    // Getters para permitir acesso aos campos e botões no Controller
+    public JTextField getTxtCpf() { return txtCpf; }
+    public JButton getBtnConsultar() { return btnConsultar; }
 }

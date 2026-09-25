@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LiberarAcesso extends JFrame {
 
@@ -12,7 +10,6 @@ public class LiberarAcesso extends JFrame {
     private JButton btnLiberar;
 
     public LiberarAcesso() {
-
         setTitle("Liberar Acesso");
         setSize(450, 250);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -36,40 +33,26 @@ public class LiberarAcesso extends JFrame {
         btnLiberar.setForeground(Color.WHITE);
         btnLiberar.setFocusPainted(false);
         add(btnLiberar);
+    }
 
-        btnLiberar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    // Getters e métodos auxiliares para a interface
+    public String getCpf() {
+        return txtCpf.getText().trim();
+    }
 
-                if (txtCpf.getText().isEmpty()) {
+    public JButton getBtnLiberar() {
+        return btnLiberar;
+    }
 
-                    JOptionPane.showMessageDialog(
-                            LiberarAcesso.this,
-                            "Digite o CPF do aluno!",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE
-                    );
+    public void exibirMensagemAviso(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem, "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
 
-                } else {
+    public void exibirMensagemSucesso(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem, "Acesso", JOptionPane.INFORMATION_MESSAGE);
+    }
 
-                    int resposta = JOptionPane.showConfirmDialog(
-                            LiberarAcesso.this,
-                            "Deseja liberar o acesso deste aluno?",
-                            "Confirmação",
-                            JOptionPane.YES_NO_OPTION
-                    );
-
-                    if (resposta == JOptionPane.YES_OPTION) {
-
-                        JOptionPane.showMessageDialog(
-                                LiberarAcesso.this,
-                                "Acesso liberado com sucesso!",
-                                "Acesso",
-                                JOptionPane.INFORMATION_MESSAGE
-                        );
-                    }
-                }
-            }
-        });
+    public int exibirConfirmacao(String mensagem) {
+        return JOptionPane.showConfirmDialog(this, mensagem, "Confirmação", JOptionPane.YES_NO_OPTION);
     }
 }

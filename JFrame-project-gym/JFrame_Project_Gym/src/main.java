@@ -1,11 +1,12 @@
-
 import view.TelaLogin;
-import javax.swing.JFrame;
+import controller.LoginController;
 
 public class main {
 	public static void main(String[] args) {
 
-		TelaLogin login = new TelaLogin();
-		login.setVisible(true);
+		TelaLogin loginView = new TelaLogin();
+		new LoginController(loginView);
+		loginView.setVisible(true);
+
 	}
 }

@@ -10,7 +10,6 @@ public class JanelaAtendente extends JFrame {
     private JMenuBar barraMenu;
 
     private JMenu menuAlunos;
-    private JMenu menuPagamentos;
     private JMenu menuAcesso;
     private JMenu menuSair;
 
@@ -19,15 +18,12 @@ public class JanelaAtendente extends JFrame {
     private JMenuItem itemConsultar;
     private JMenuItem itemMatricula;
 
-    private JMenuItem itemPagamento;
     private JMenuItem itemLiberarAcesso;
-
     private JMenuItem itemSair;
 
     private JButton btnCadastrar;
     private JButton btnConsultar;
     private JButton btnMatricula;
-    private JButton btnPagamento;
     private JButton btnAcesso;
     private JButton btnSair;
 
@@ -45,7 +41,7 @@ public class JanelaAtendente extends JFrame {
         // Painel central
         JPanel painelCentral = new JPanel();
         painelCentral.setLayout(null);
-        painelCentral.setPreferredSize(new Dimension(450, 535));
+        painelCentral.setPreferredSize(new Dimension(450, 485));
         painelCentral.setBackground(new Color(245, 245, 245));
 
         // Logo
@@ -108,22 +104,15 @@ public class JanelaAtendente extends JFrame {
                 255
         );
 
-        btnPagamento = criarBotao(
-                "Registrar Pagamento",
-                75,
-                305
-        );
-
         btnAcesso = criarBotao(
                 "Liberar Acesso",
                 75,
-                355
+                305
         );
 
         painelCentral.add(btnCadastrar);
         painelCentral.add(btnConsultar);
         painelCentral.add(btnMatricula);
-        painelCentral.add(btnPagamento);
         painelCentral.add(btnAcesso);
 
         // Botão Sair / Voltar
@@ -132,7 +121,7 @@ public class JanelaAtendente extends JFrame {
 
         btnSair.setBounds(
                 75,
-                425,
+                375,
                 300,
                 35
         );
@@ -151,32 +140,6 @@ public class JanelaAtendente extends JFrame {
         painelCentral.add(btnSair);
 
         add(painelCentral);
-
-        // Eventos dos botões
-
-        btnCadastrar.addActionListener(
-                e -> abrirCadastrarAluno()
-        );
-
-        btnConsultar.addActionListener(
-                e -> abrirConsultarAluno()
-        );
-
-        btnMatricula.addActionListener(
-                e -> gerenciarMatricula()
-        );
-
-        btnPagamento.addActionListener(
-                e -> abrirPagamento()
-        );
-
-        btnAcesso.addActionListener(
-                e -> abrirLiberarAcesso()
-        );
-
-        btnSair.addActionListener(
-                e -> voltarLogin()
-        );
     }
 
     // ==========================================================
@@ -222,251 +185,51 @@ public class JanelaAtendente extends JFrame {
         barraMenu = new JMenuBar();
 
         menuAlunos = new JMenu("Alunos");
-        menuPagamentos = new JMenu("Pagamentos");
         menuAcesso = new JMenu("Acesso");
         menuSair = new JMenu("Sair");
 
-        // -------------------------
         // MENU ALUNOS
-        // -------------------------
-
-        itemCadastrar = new JMenuItem(
-                "Cadastrar aluno"
-        );
-
-        itemEditar = new JMenuItem(
-                "Editar aluno"
-        );
-
-        itemConsultar = new JMenuItem(
-                "Consultar aluno"
-        );
-
-        itemMatricula = new JMenuItem(
-                "Gerenciar matrícula"
-        );
+        itemCadastrar = new JMenuItem("Cadastrar aluno");
+        itemEditar = new JMenuItem("Editar aluno");
+        itemConsultar = new JMenuItem("Consultar aluno");
+        itemMatricula = new JMenuItem("Gerenciar matrícula");
 
         menuAlunos.add(itemCadastrar);
         menuAlunos.add(itemEditar);
         menuAlunos.add(itemConsultar);
-
         menuAlunos.addSeparator();
-
         menuAlunos.add(itemMatricula);
 
-        // -------------------------
-        // MENU PAGAMENTOS
-        // -------------------------
-
-        itemPagamento = new JMenuItem(
-                "Registrar pagamento"
-        );
-
-        menuPagamentos.add(itemPagamento);
-
-        // -------------------------
         // MENU ACESSO
-        // -------------------------
-
-        itemLiberarAcesso = new JMenuItem(
-                "Liberar acesso"
-        );
-
+        itemLiberarAcesso = new JMenuItem("Liberar acesso");
         menuAcesso.add(itemLiberarAcesso);
 
-        // -------------------------
         // MENU SAIR
-        // -------------------------
-
-        itemSair = new JMenuItem(
-                "Voltar para login"
-        );
-
+        itemSair = new JMenuItem("Voltar para login");
         menuSair.add(itemSair);
 
         // Adiciona menus à barra
-
         barraMenu.add(menuAlunos);
-        barraMenu.add(menuPagamentos);
         barraMenu.add(menuAcesso);
         barraMenu.add(menuSair);
 
         setJMenuBar(barraMenu);
-
-        // ======================================================
-        // EVENTOS DO MENU
-        // ======================================================
-
-        itemCadastrar.addActionListener(
-                e -> abrirCadastrarAluno()
-        );
-
-        itemEditar.addActionListener(
-                e -> abrirEditarAluno()
-        );
-
-        itemConsultar.addActionListener(
-                e -> abrirConsultarAluno()
-        );
-
-        itemMatricula.addActionListener(
-                e -> gerenciarMatricula()
-        );
-
-        itemPagamento.addActionListener(
-                e -> abrirPagamento()
-        );
-
-        itemLiberarAcesso.addActionListener(
-                e -> abrirLiberarAcesso()
-        );
-
-        itemSair.addActionListener(
-                e -> voltarLogin()
-        );
     }
 
     // ==========================================================
-    // ABRIR TELAS
+    // GETTERS PARA O CONTROLLER
     // ==========================================================
 
-    private void abrirCadastrarAluno() {
+    public JButton getBtnCadastrar() { return btnCadastrar; }
+    public JButton getBtnConsultar() { return btnConsultar; }
+    public JButton getBtnMatricula() { return btnMatricula; }
+    public JButton getBtnAcesso() { return btnAcesso; }
+    public JButton getBtnSair() { return btnSair; }
 
-        new CadastrarAluno().setVisible(true);
-    }
-
-    private void abrirEditarAluno() {
-
-        new EditarAluno().setVisible(true);
-    }
-
-    private void abrirConsultarAluno() {
-
-        new ConsultarAluno().setVisible(true);
-    }
-
-    private void abrirPagamento() {
-
-        new Pagamento().setVisible(true);
-    }
-
-    private void abrirLiberarAcesso() {
-
-        new LiberarAcesso().setVisible(true);
-    }
-
-    // ==========================================================
-    // GERENCIAR MATRÍCULA
-    // ==========================================================
-
-    private void gerenciarMatricula() {
-
-        String[] operacoes = {
-                "Nova matrícula",
-                "Renovar matrícula"
-        };
-
-        JComboBox<String> comboOperacao =
-                new JComboBox<>(operacoes);
-
-        JTextField txtCpf =
-                new JTextField();
-
-        String[] planos = {
-                "Plano Básico",
-                "Plano Premium",
-                "Plano Anual"
-        };
-
-        JComboBox<String> comboPlano =
-                new JComboBox<>(planos);
-
-        JPanel painel =
-                new JPanel(
-                        new GridLayout(
-                                0,
-                                1,
-                                5,
-                                5
-                        )
-                );
-
-        painel.add(
-                new JLabel("Operação:")
-        );
-
-        painel.add(comboOperacao);
-
-        painel.add(
-                new JLabel("CPF do aluno:")
-        );
-
-        painel.add(txtCpf);
-
-        painel.add(
-                new JLabel("Plano:")
-        );
-
-        painel.add(comboPlano);
-
-        int resposta =
-                JOptionPane.showConfirmDialog(
-                        this,
-                        painel,
-                        "Gerenciar Matrícula",
-                        JOptionPane.OK_CANCEL_OPTION,
-                        JOptionPane.PLAIN_MESSAGE
-                );
-
-        if (resposta != JOptionPane.OK_OPTION) {
-            return;
-        }
-
-        String cpf =
-                txtCpf.getText().trim();
-
-        // Validação
-
-        if (cpf.isEmpty()) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Digite o CPF do aluno!",
-                    "Validação",
-                    JOptionPane.WARNING_MESSAGE
-            );
-
-            return;
-        }
-
-        String operacao =
-                (String) comboOperacao.getSelectedItem();
-
-        String plano =
-                (String) comboPlano.getSelectedItem();
-
-        JOptionPane.showMessageDialog(
-                this,
-                operacao
-                        + " realizada com sucesso!\n"
-                        + "CPF: "
-                        + cpf
-                        + "\n"
-                        + "Plano: "
-                        + plano,
-                "Matrícula",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-    }
-
-    // ==========================================================
-    // VOLTAR PARA LOGIN
-    // ==========================================================
-
-    private void voltarLogin() {
-
-        dispose();
-
-        new TelaLogin().setVisible(true);
-    }
+    public JMenuItem getItemCadastrar() { return itemCadastrar; }
+    public JMenuItem getItemEditar() { return itemEditar; }
+    public JMenuItem getItemConsultar() { return itemConsultar; }
+    public JMenuItem getItemMatricula() { return itemMatricula; }
+    public JMenuItem getItemLiberarAcesso() { return itemLiberarAcesso; }
+    public JMenuItem getItemSair() { return itemSair; }
 }

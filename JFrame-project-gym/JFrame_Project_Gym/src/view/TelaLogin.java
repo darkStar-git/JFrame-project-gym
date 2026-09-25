@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class TelaLogin extends JFrame {
 
@@ -25,9 +23,12 @@ public class TelaLogin extends JFrame {
 
         // Logo
         JLabel lblLogo = new JLabel();
-        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/images/logo.png"));
-        Image image = logoIcon.getImage().getScaledInstance(160, 80, Image.SCALE_SMOOTH);
-        lblLogo.setIcon(new ImageIcon(image));
+        java.net.URL imgURL = getClass().getResource("/images/logo.png");
+        if (imgURL != null) {
+            ImageIcon logoIcon = new ImageIcon(imgURL);
+            Image image = logoIcon.getImage().getScaledInstance(160, 80, Image.SCALE_SMOOTH);
+            lblLogo.setIcon(new ImageIcon(image));
+        }
         lblLogo.setBounds(120, 15, 160, 80);
         lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
         painelCentral.add(lblLogo);
@@ -60,7 +61,7 @@ public class TelaLogin extends JFrame {
         btnEntrar.setFont(new Font("Arial", Font.BOLD, 13));
         painelCentral.add(btnEntrar);
 
-        // Botão Desenvolvedores (posicionado logo abaixo do botão Entrar)
+        // Botão Desenvolvedores
         btnDesenvolvedores = new JButton("Créditos / Desenvolvedores");
         btnDesenvolvedores.setBounds(50, 305, 300, 30);
         btnDesenvolvedores.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -71,46 +72,22 @@ public class TelaLogin extends JFrame {
         painelCentral.add(btnDesenvolvedores);
 
         add(painelCentral);
+    }
 
+    // Getters para uso do Controller
+    public String getUsuario() {
+        return txtUsuario.getText();
+    }
 
-        // AÇÕES
+    public String getSenha() {
+        return new String(txtSenha.getPassword());
+    }
 
+    public JButton getBtnEntrar() {
+        return btnEntrar;
+    }
 
-        // Validação
-        btnEntrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String usuario = txtUsuario.getText().trim();
-                String senha = new String(txtSenha.getPassword()).trim();
-
-                if (usuario.equalsIgnoreCase("professor") && senha.equalsIgnoreCase("prof123")) {
-                    new JanelaProfessor().setVisible(true);
-                    dispose();
-                }// 3. Acesso do ALUNO
-                else if (usuario.equalsIgnoreCase("aluno") && senha.equalsIgnoreCase("aluno123")) {
-                    new JanelaAluno().setVisible(true);
-                    dispose();
-                }
-                else if (usuario.equalsIgnoreCase("atendente") && senha.equalsIgnoreCase("atendente123")) {
-                    new JanelaAtendente().setVisible(true);
-                    dispose();
-                }                
-                else {
-                    JOptionPane.showMessageDialog(
-                            TelaLogin.this,
-                            "Usuário ou senha incorretos!",
-                            "Erro de Autenticação",
-                            JOptionPane.ERROR_MESSAGE
-                    );
-                }
-
-                
-            }
-        });
-
-        // Abre a JanelaDevs diretamente
-        btnDesenvolvedores.addActionListener(e -> {
-            new JanelaDevs(TelaLogin.this).setVisible(true);
-        });
+    public JButton getBtnDevs() {
+        return btnDesenvolvedores;
     }
 }

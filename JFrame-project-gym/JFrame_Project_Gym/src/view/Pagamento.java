@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Pagamento extends JFrame {
 
@@ -48,33 +46,32 @@ public class Pagamento extends JFrame {
         btnRegistrar.setForeground(Color.WHITE);
         btnRegistrar.setFocusPainted(false);
         add(btnRegistrar);
+    }
 
-        btnRegistrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    // Getters de dados e componentes
+    public String getCpf() {
+        return txtCpf.getText().trim();
+    }
 
-                if (txtCpf.getText().isEmpty()
-                        || txtValor.getText().isEmpty()) {
+    public String getValor() {
+        return txtValor.getText().trim();
+    }
 
-                    JOptionPane.showMessageDialog(
-                            Pagamento.this,
-                            "Preencha todos os campos!",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE
-                    );
+    public JButton getBtnRegistrar() {
+        return btnRegistrar;
+    }
 
-                } else {
+    // Métodos utilitários de mensagem
+    public void exibirMensagemAviso(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem, "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
 
-                    JOptionPane.showMessageDialog(
-                            Pagamento.this,
-                            "Pagamento registrado com sucesso!\n" +
-                            "CPF: " + txtCpf.getText() +
-                            "\nValor: R$ " + txtValor.getText(),
-                            "Pagamento",
-                            JOptionPane.INFORMATION_MESSAGE
-                    );
-                }
-            }
-        });
+    public void exibirMensagemSucesso(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem, "Pagamento", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void limparCampos() {
+        txtCpf.setText("");
+        txtValor.setText("");
     }
 }

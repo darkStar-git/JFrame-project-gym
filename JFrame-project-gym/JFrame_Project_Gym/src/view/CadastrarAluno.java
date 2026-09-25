@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class CadastrarAluno extends JFrame {
 
@@ -72,45 +70,12 @@ public class CadastrarAluno extends JFrame {
         btnLimpar.setBounds(210, 230, 140, 35);
         btnLimpar.setFocusPainted(false);
         add(btnLimpar);
-
-        // Eventos
-        btnCadastrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (txtNome.getText().isEmpty()
-                        || txtCpf.getText().isEmpty()
-                        || txtEmail.getText().isEmpty()) {
-
-                    JOptionPane.showMessageDialog(
-                            CadastrarAluno.this,
-                            "Preencha todos os campos!",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE
-                    );
-
-                } else {
-
-                    JOptionPane.showMessageDialog(
-                            CadastrarAluno.this,
-                            "Aluno cadastrado com sucesso!",
-                            "Cadastro",
-                            JOptionPane.INFORMATION_MESSAGE
-                    );
-                }
-            }
-        });
-
-        btnLimpar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                txtNome.setText("");
-                txtCpf.setText("");
-                txtEmail.setText("");
-
-                txtNome.requestFocus();
-            }
-        });
     }
+
+    // Getters para permitir acesso aos campos e botões no Controller
+    public JTextField getTxtNome() { return txtNome; }
+    public JTextField getTxtCpf() { return txtCpf; }
+    public JTextField getTxtEmail() { return txtEmail; }
+    public JButton getBtnCadastrar() { return btnCadastrar; }
+    public JButton getBtnLimpar() { return btnLimpar; }
 }

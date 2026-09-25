@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class EditarAluno extends JFrame {
 
@@ -51,31 +49,18 @@ public class EditarAluno extends JFrame {
         btnEditar.setForeground(Color.WHITE);
         btnEditar.setFocusPainted(false);
         add(btnEditar);
+    }
 
-        btnEditar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    // Getters para permitir acesso aos campos e ao botão no Controller
+    public JTextField getTxtCpf() {
+        return txtCpf;
+    }
 
-                if (txtCpf.getText().isEmpty()
-                        || txtNome.getText().isEmpty()) {
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
 
-                    JOptionPane.showMessageDialog(
-                            EditarAluno.this,
-                            "Preencha todos os campos!",
-                            "Aviso",
-                            JOptionPane.WARNING_MESSAGE
-                    );
-
-                } else {
-
-                    JOptionPane.showMessageDialog(
-                            EditarAluno.this,
-                            "Aluno atualizado com sucesso!",
-                            "Edição",
-                            JOptionPane.INFORMATION_MESSAGE
-                    );
-                }
-            }
-        });
+    public JButton getBtnEditar() {
+        return btnEditar;
     }
 }
