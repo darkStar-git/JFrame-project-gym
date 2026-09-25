@@ -2,7 +2,6 @@
 *.iml
 .vscode/
 
-bin/
 build/
 out/
 target/
