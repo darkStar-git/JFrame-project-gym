@@ -1,11 +1,19 @@
 CREATE DATABASE dbGym
 USE dbGym
 
-
+drop table tbAluno
 CREATE TABLE tbTreino(
 	idTreino INT PRIMARY KEY AUTO_INCREMENT,
     cpfAluno CHAR(14),
     descricaoTreino VARCHAR (50)
 );
 
+CREATE TABLE tbAluno(
+	idAluno INT PRIMARY KEY AUTO_INCREMENT,
+    nome varchar(100),
+    cpfAluno VARCHAR(14),
+    emailAluno VARCHAR(50)
+);         
+
+SELECT * FROM tbAluno
 SELECT * FROM tbTreino
