@@ -1,0 +1,11 @@
+CREATE DATABASE dbGym
+USE dbGym
+
+
+CREATE TABLE tbTreino(
+	idTreino INT PRIMARY KEY AUTO_INCREMENT,
+    cpfAluno CHAR(14),
+    descricaoTreino VARCHAR (50)
+);
+
+SELECT * FROM tbTreino
